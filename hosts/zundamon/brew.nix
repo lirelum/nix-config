@@ -10,7 +10,7 @@
       "nextcloud"
       "firefox"
       "keepassxc"
-      "calbre"
+      "calibre"
       "zotero"
     ];
   };

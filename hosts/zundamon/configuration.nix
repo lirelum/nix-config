@@ -14,6 +14,10 @@
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     config.allowUnfree = true;
+    flake = {
+      setFlakeRegistry = false;
+      setNixPath = false;
+    };
   };
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
