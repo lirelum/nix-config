@@ -87,10 +87,12 @@
       "networkmanager"
       "wheel"
     ];
+    shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBR4/VlVRAwWFxB7zkoKGAt/KSIjAxWxvXkSJGnPxnBn lirelum@miku"
     ];
   };
+  programs.zsh.enable = true;
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
