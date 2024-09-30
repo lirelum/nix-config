@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./miku
+    ./zundamon
+  ];
+}
