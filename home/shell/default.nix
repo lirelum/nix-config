@@ -5,5 +5,6 @@
     ./starship.nix
     ./direnv.nix
     ./alacritty.nix
+    ./kitty.nix
   ];
 }
