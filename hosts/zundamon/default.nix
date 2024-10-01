@@ -13,6 +13,8 @@
         home-manager.useUserPackages = true;
         home-manager.users.lirelum = self.homeModules.default;
       }
+      inputs.nix-index-database.darwinModules.nix-index
+      {programs.nix-index-database.comma.enable = true;}
     ];
   };
 }

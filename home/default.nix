@@ -23,7 +23,6 @@
         which
         btop
         lsof
-        comma
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
