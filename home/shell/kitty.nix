@@ -5,5 +5,6 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
+    theme = "Box";
   };
 }
