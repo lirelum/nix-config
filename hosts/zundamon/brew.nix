@@ -12,6 +12,7 @@
       "keepassxc"
       "calibre"
       "zotero"
+      "discord"
     ];
   };
 }
