@@ -90,6 +90,7 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBR4/VlVRAwWFxB7zkoKGAt/KSIjAxWxvXkSJGnPxnBn lirelum@miku"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDsnfEEitMxuRzmknVyq0OYG9ZfvEfP0pszSveV5sM6w lirelum@zundamon.local"
     ];
   };
   programs.zsh.enable = true;
