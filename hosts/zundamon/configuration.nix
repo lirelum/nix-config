@@ -32,12 +32,20 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
     optimise = {
       automatic = true;
-      dates = ["weekly"];
+      interval = {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      };
     };
   };
   system.stateVersion = 4;
