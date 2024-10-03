@@ -11,6 +11,7 @@
       ./programs-gpg
       ./programs-git
       ./programs-firefox
+      ./programs-vscode
     ];
 
     home.packages = with pkgs;
