@@ -12,15 +12,17 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix.url = "github:helix-editor/helix";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      flake-parts,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-darwin"
@@ -29,8 +31,10 @@
         ./hosts
         ./home
       ];
-      perSystem = {system, ...}: {
-        formatter = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
-      };
+      perSystem =
+        { system, ... }:
+        {
+          formatter = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+        };
     };
 }

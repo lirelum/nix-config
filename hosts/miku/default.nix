@@ -1,8 +1,5 @@
+{ inputs, self, ... }:
 {
-  inputs,
-  self,
-  ...
-}: {
   flake.nixosConfigurations.miku = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = {
@@ -21,7 +18,7 @@
         home-manager.users.lirelum = self.homeModules.default;
       }
       inputs.nix-index-database.nixosModules.nix-index
-      {programs.nix-index-database.comma.enable = true;}
+      { programs.nix-index-database.comma.enable = true; }
     ];
   };
 }
