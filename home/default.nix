@@ -2,6 +2,11 @@
 {
   flake.homeModules.default =
     { pkgs, ... }:
+    let
+      rstudio-custom = pkgs.unstable.rstudioWrapper.override {
+        packages = with pkgs.unstable.rPackages; [ ggplot2 ];
+      };
+    in
     {
       imports = [
         ./shell
@@ -24,6 +29,7 @@
           which
           btop
           lsof
+          rstudio-custom
         ]
         ++ (
           if pkgs.system == "x86_64-linux" then

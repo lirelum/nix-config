@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  self,
   ...
 }:
 {
@@ -147,7 +148,10 @@
       allowUnfree = true;
     };
 
-    overlays = [ inputs.helix.overlays.default ];
+    overlays = [
+      inputs.helix.overlays.default
+      self.overlays.unstable
+    ];
   };
 
   system.stateVersion = "24.05";

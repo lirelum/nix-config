@@ -2,6 +2,7 @@
   inputs,
   lib,
   config,
+  self,
   ...
 }:
 {
@@ -17,6 +18,10 @@
       setFlakeRegistry = false;
       setNixPath = false;
     };
+    overlays = [
+      inputs.helix.overlays.default
+      self.overlays.unstable
+    ];
   };
   nix =
     let

@@ -2,7 +2,7 @@
 {
   flake.darwinConfigurations.zundamon = inputs.nix-darwin.lib.darwinSystem {
     specialArgs = {
-      inherit inputs;
+      inherit inputs self;
     };
     modules = [
       ./configuration.nix
