@@ -48,6 +48,7 @@
           nextcloud-client
           keepassxc
           retroarch'
+          openmw
         ]
         else []
       );
