@@ -27,13 +27,12 @@
       [
         zip
         unzip
-        zx
+        xz
         p7zip
         file
         which
         btop
         lsof
-        rstudio-custom
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
@@ -47,6 +46,7 @@
           thunderbird
           nextcloud-client
           keepassxc
+          rstudio-custom
           retroarch'
           openmw
         ]
