@@ -59,10 +59,19 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-anthy
+      fcitx5-gtk
+      fcitx5-configtool
+    ];
+  };
+  environment.variables.GLFW_IM_MODULE = "ibus";
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "compost:menu";
+    options = "compose:menu";
   };
 
   # GUI Stuff
