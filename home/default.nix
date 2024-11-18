@@ -21,6 +21,7 @@
       ./programs-git
       ./programs-firefox
       ./programs-vscode
+      ./gaming
     ];
 
     home.packages = with pkgs;
