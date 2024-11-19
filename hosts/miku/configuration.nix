@@ -5,7 +5,10 @@
   inputs,
   self,
   ...
-}: {
+}:
+{
+  imports = [ ./gaming.nix ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -36,7 +39,7 @@
 
   # Settings for nvidia card
   hardware.opengl.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -89,14 +92,6 @@
     pulse.enable = true;
   };
 
-  # Gaming
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
-
   virtualisation = {
     containers.enable = true;
     podman = {
@@ -106,12 +101,11 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [distrobox];
+  environment.systemPackages = with pkgs; [ distrobox ];
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-    ];
+    libraries = with pkgs; [ ];
   };
 
   # User config
@@ -131,30 +125,32 @@
   };
   programs.zsh.enable = true;
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      experimental-features = "nix-command flakes";
-      flake-registry = "";
-      nix-path = config.nix.nixPath;
-      trusted-users = ["@wheel"];
-      substituters = ["https://helix.cachix.org"];
-      trusted-public-keys = ["helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="];
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        experimental-features = "nix-command flakes";
+        flake-registry = "";
+        nix-path = config.nix.nixPath;
+        trusted-users = [ "@wheel" ];
+        substituters = [ "https://helix.cachix.org" ];
+        trusted-public-keys = [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
+      };
+      channel.enable = false;
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
+      };
+      optimise = {
+        automatic = true;
+        dates = [ "weekly" ];
+      };
     };
-    channel.enable = false;
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-    optimise = {
-      automatic = true;
-      dates = ["weekly"];
-    };
-  };
   nixpkgs = {
     config = {
       allowUnfree = true;
