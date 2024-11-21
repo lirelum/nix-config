@@ -10,6 +10,9 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit inputs;
+        };
         home-manager.users.lirelum = self.homeModules.default;
       }
       inputs.nix-index-database.darwinModules.nix-index
