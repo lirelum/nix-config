@@ -33,14 +33,11 @@
         which
         btop
         lsof
+        vesktop
       ]
       ++ (
         if pkgs.system == "x86_64-linux"
         then [
-          (discord.override {
-            withVencord = true;
-            withOpenASAR = true;
-          })
           libreoffice
           calibre
           thunderbird

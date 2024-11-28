@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -10,7 +9,6 @@
           family = "MesloLGL Nerd Font";
           style = "Regular";
         };
-        size = if pkgs.system == "aarch64-darwin" then 14 else 11.25;
       };
       window.option_as_alt = "OnlyLeft";
     };

@@ -12,7 +12,8 @@
       "keepassxc"
       "calibre"
       "zotero"
-      "discord"
+      "lastfm"
+      "xquartz"
     ];
   };
 }

@@ -1,6 +1,6 @@
 {
   programs.kitty = {
-    enable = true;
+    enable = false;
     shellIntegration = {
       enableBashIntegration = true;
       enableZshIntegration = true;
