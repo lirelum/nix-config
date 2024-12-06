@@ -14,6 +14,7 @@
       "zotero"
       "lastfm"
       "xquartz"
+      "iterm2"
     ];
   };
 }
