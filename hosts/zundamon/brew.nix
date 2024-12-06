@@ -15,6 +15,7 @@
       "lastfm"
       "xquartz"
       "iterm2"
+      "visual-studio-code"
     ];
   };
 }
