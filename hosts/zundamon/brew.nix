@@ -16,6 +16,7 @@
       "xquartz"
       "iterm2"
       "visual-studio-code"
+      "jetbrains-toolbox"
     ];
   };
 }

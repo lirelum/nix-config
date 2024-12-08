@@ -15,5 +15,8 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+    envExtra = ''
+      source /Users/lirelum/.ghcup/env
+    '';
   };
 }
