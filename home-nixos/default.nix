@@ -6,5 +6,6 @@
     ./misc.nix
     ./firefox.nix
     ./jetbrains.nix
+    ./libreoffice.nix
   ];
 }
