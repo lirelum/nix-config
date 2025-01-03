@@ -3,7 +3,6 @@ let inherit (lib) mkOption types;
 in {
   options.local.vscode = {
     packages = mkOption {
-      name = "Packages";
       description = "List of packages to use with vs code, as a function";
       default = null;
       type = types.anything;
