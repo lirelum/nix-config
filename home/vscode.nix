@@ -1,9 +1,10 @@
+# VS Codeの一般設定。LinuxおよびDarwinと共有。
 { lib, ... }:
 let inherit (lib) mkOption types;
 in {
   options.local.vscode = {
     packages = mkOption {
-      description = "List of packages to use with vs code, as a function";
+      description = "VS Codeのパッケージのリスト、関数の型";
       default = null;
       type = types.anything;
     };
