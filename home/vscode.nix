@@ -24,5 +24,6 @@ in {
       neovim
       texlive.combined.scheme-full
       julia-bin
+      eslint
     ]);
 }
