@@ -25,6 +25,6 @@ in {
       texlive.combined.scheme-full
       julia-bin
       eslint
-      nixfmt-classixc
+      nixfmt-classic
     ]);
 }
