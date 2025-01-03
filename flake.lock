@@ -130,6 +130,21 @@
         "type": "github"
       }
     },
+    "nix-templates": {
+      "locked": {
+        "lastModified": 1735928220,
+        "narHash": "sha256-3uZ3QH5skSfQXh5v6u8yy9K32M+atK7tr8yoLX9yehI=",
+        "owner": "lirelum",
+        "repo": "nix-templates",
+        "rev": "54a027125d5caffc760a26fa61a4cb61daa07ded",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lirelum",
+        "repo": "nix-templates",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1733940404,
@@ -183,6 +198,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nix-alien": "nix-alien",
+        "nix-templates": "nix-templates",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-darwin": "nixpkgs-darwin"
       }

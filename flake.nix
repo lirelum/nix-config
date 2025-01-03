@@ -10,6 +10,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-templates.url = "github:lirelum/nix-templates";
   };
 
   outputs =
