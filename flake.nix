@@ -40,7 +40,7 @@
               username = "lirelum";
               homeDirectory = "/Users/${username}";
             };
-            modules = [ ./home ];
+            modules = [ ./home ./home-darwin ];
           };
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {

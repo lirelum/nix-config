@@ -1,20 +1,5 @@
-{ pkgs, ... }:
-let
-  myvscode = pkgs.vscode.fhsWithPackages (ps:
-    with ps; [
-      shellcheck
-      shfmt
-      nixfmt-classic
-      nil
-      rustup
-      dhall-lsp-server
-      elixir
-      quarto
-      ghc
-      cabal-install
-      stack
-      neovim
-    ]);
+{ pkgs, config, ... }:
+let myvscode = pkgs.vscode.fhsWithPackages config.local.vscode.packages;
 in {
   programs.vscode = {
     enable = true;
