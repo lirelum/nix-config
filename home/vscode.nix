@@ -23,5 +23,6 @@ in {
       stack
       neovim
       texlive.combined.scheme-full
+      julia-bin
     ]);
 }
