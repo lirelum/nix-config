@@ -22,5 +22,6 @@ in {
       cabal-install
       stack
       neovim
+      texlive.combined.scheme-full
     ]);
 }
