@@ -27,5 +27,8 @@ in {
       julia-bin
       eslint
       nixfmt-classic
+      dotnetCorePackages.dotnet_8.sdk
+      dotnetCorePackages.dotnet_9.sdk
+      opam
     ]);
 }
