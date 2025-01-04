@@ -7,5 +7,6 @@
     ./distrobox.nix
     ./gnome.nix
     ./hardware-configuration.nix
+    ./steam.nix
   ];
 }
