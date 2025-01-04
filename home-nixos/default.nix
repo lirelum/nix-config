@@ -7,5 +7,6 @@
     ./firefox.nix
     ./jetbrains.nix
     ./libreoffice.nix
+    ./distrobox.nix
   ];
 }
