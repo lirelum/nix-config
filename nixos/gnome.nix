@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = (with pkgs; [ gnome-tweaks guake ])
+  environment.systemPackages = (with pkgs; [ gnome-tweaks ])
     ++ (with pkgs.gnomeExtensions; [ dash-to-dock tray-icons-reloaded ]);
   services.xserver = {
     displayManager.gdm.enable = true;
