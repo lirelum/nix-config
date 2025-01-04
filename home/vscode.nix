@@ -29,6 +29,10 @@ in {
       nixfmt-classic
       dotnetCorePackages.dotnet_8.sdk
       dotnetCorePackages.dotnet_9.sdk
-      opam
+      ocaml
+      ocamlPackages.ocaml-lsp
+      ocamlPackages.odoc
+      ocamlPackages.utop
+      ocamlPackages.ocamlformat
     ]);
 }
