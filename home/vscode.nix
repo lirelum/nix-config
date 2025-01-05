@@ -11,6 +11,7 @@ in {
   };
   config.local.vscode.packages = (ps:
     with ps; [
+      bash-language-server
       shellcheck
       shfmt
       nixfmt-classic
