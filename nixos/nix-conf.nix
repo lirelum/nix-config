@@ -6,7 +6,7 @@
       nix-path = config.nix.nixPath;
       trusted-public-keys =
         [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
-      trusted-substituters = [ "https://cache.iog.io" ];
+      substituters = [ "https://cache.iog.io" ];
     };
     channel.enable = false;
 
