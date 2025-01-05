@@ -16,5 +16,8 @@
     open-sans
     ubuntu_font_family
     inter
+    source-han-sans
+    source-han-serif
+    source-han-code-jp
   ];
 }
