@@ -28,7 +28,7 @@
               overlays = [ outputs.overlays.default ];
             };
           };
-        in if builtins.match "[A-Za-z0-9]+-darwin" system != null then
+        in if builtins.match "[A-Za-z0-9_\-]+-darwin" system != null then
           import nixpkgs-darwin settings
         else
           import nixpkgs settings);
