@@ -22,6 +22,7 @@ in {
       quarto
       ghc
       cabal-install
+      haskell-language-server
       stack
       neovim
       texlive.combined.scheme-full
