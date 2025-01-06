@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
-let myvscode = pkgs.vscode.fhsWithPackages config.local.vscode.packages;
+let
+  myvscode = pkgs.unstable.vscode.fhsWithPackages config.local.vscode.packages;
 in {
   programs.vscode = {
     enable = true;
