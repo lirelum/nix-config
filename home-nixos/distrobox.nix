@@ -1,3 +1,1 @@
-{
-  home.file.".distroboxrc".source = ./distroboxrc.sh;
-}
+{ home.file.".distroboxrc".source = ./distroboxrc.sh; }
