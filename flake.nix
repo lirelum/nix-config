@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,36 +14,51 @@
     nix-templates.url = "github:lirelum/nix-templates";
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, nixpkgs-darwin, home-manager, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-darwin, nixpkgs-unstable
+    , home-manager, flake-utils, ... }:
     let
       inherit (self) outputs;
       inherit (flake-utils.lib) eachDefaultSystem;
       selectNixpkgs = (system:
-        if builtins.match "[A-Za-z0-9]+-darwin" system != null then
-          nixpkgs-darwin
+        let
+          settings = {
+            inherit system;
+            config = {
+              allowUnfree = true;
+              overlays = [ outputs.overlays.default ];
+            };
+          };
+        in if builtins.match "[A-Za-z0-9]+-darwin" system != null then
+          import nixpkgs-darwin settings
         else
-          nixpkgs);
+          import nixpkgs settings);
     in eachDefaultSystem (system:
-      let pkgs = (selectNixpkgs system).legacyPackages.${system};
+      let pkgs = (selectNixpkgs system);
       in {
         formatter = pkgs.nixfmt-classic;
         packages = import ./pkgs pkgs;
       }) // {
 
-        overlays.default =
-          (final: prev: { local = outputs.packages.${final.system}; });
+        overlays.default = (final: prev: {
+          local = outputs.packages.${final.system};
+          unstable = import nixpkgs-unstable {
+            system = final.system;
+            config.allowUnfree = true;
+          };
+        });
 
         homeConfigurations."lirelum@zundamon" =
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs-darwin.legacyPackages.aarch64-darwin;
+          home-manager.lib.homeManagerConfiguration
+          (let system = "aarch64-darwin";
+          in {
+            pkgs = selectNixpkgs system;
             extraSpecialArgs = rec {
               inherit inputs outputs;
               username = "lirelum";
               homeDirectory = "/Users/${username}";
             };
             modules = [ ./home ./home-darwin ];
-          };
+          });
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
