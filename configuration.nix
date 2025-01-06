@@ -18,7 +18,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
 
   # Enable the X11 windowing system.
