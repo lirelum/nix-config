@@ -30,12 +30,6 @@
           import nixpkgs-darwin settings
         else
           import nixpkgs settings);
-      inherit (nixpkgs.lib) hasSuffix filterAttrs attrNames;
-      importNix = dir:
-        map (file: dir + "/${file}") (attrNames (filterAttrs (name: type:
-          hasSuffix ".nix" name && type != "directory" && name != "default.nix")
-          (builtins.readDir dir)));
-      specialArgs = { inherit inputs outputs importNix; };
     in eachDefaultSystem (system:
       let pkgs = (selectNixpkgs system);
       in {
@@ -56,7 +50,8 @@
           (let system = "aarch64-darwin";
           in {
             pkgs = selectNixpkgs system;
-            extraSpecialArgs = specialArgs // rec {
+            extraSpecialArgs = rec {
+              inherit inputs outputs;
               username = "lirelum";
               homeDirectory = "/Users/${username}";
             };
@@ -65,7 +60,7 @@
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          inherit specialArgs;
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./configuration.nix
 
@@ -73,9 +68,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = specialArgs // rec {
+              home-manager.extraSpecialArgs = rec {
                 username = "autumn";
                 homeDirectory = "/home/${username}";
+                inherit inputs outputs;
               };
               home-manager.users.autumn.imports = [ ./home ./home-nixos ];
             }

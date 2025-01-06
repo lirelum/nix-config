@@ -1,6 +1,6 @@
 # このモジュールはLinuxおよびDarwinと共有する設定
-{ username, homeDirectory, importNix, ... }: {
-  imports = importNix ./.;
+{ username, homeDirectory, ... }: {
+  imports = [ ./shell ./fonts.nix ./git.nix ./vscode.nix ];
 
   home = {
     inherit username homeDirectory;
