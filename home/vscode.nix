@@ -29,5 +29,8 @@ in {
       julia-bin
       eslint
       nixfmt-classic
+      coreutils
+      openssh
+      which
     ]);
 }
