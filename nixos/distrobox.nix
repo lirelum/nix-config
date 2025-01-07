@@ -1,5 +1,5 @@
 # ディストロボックスは、NixOSで実行できないプログラムを使用向け
-# 現在、Ciderのみに使用
+# 現在、使用しません
 { pkgs, ... }: {
   virtualisation.podman = {
     enable = true;
