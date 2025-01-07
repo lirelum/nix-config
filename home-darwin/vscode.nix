@@ -1,3 +1,3 @@
 { pkgs, config, ... }: {
-  home.packages = config.local.vscode.packages pkgs.unstable;
+  home.packages = config.local.vscode.packages (_: []) pkgs.unstable;
 }

@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ coreutils-full ]; }
+{ pkgs, ... }: { home.packages = with pkgs.unstable; [ coreutils-full ]; }

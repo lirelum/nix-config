@@ -9,7 +9,7 @@ in {
       type = types.anything;
     };
   };
-  config.local.vscode.packages = (ps:
+  config.local.vscode.packages = (extra: ps:
     with ps; [
       bash-language-server
       shellcheck
@@ -29,8 +29,6 @@ in {
       julia-bin
       eslint
       nixfmt-classic
-      coreutils
-      openssh
-      which
-    ]);
+      coreutils-full
+    ] ++ extra ps);
 }
