@@ -37,7 +37,7 @@
       let pkgs = (selectNixpkgs system);
       in {
         formatter = pkgs.nixfmt-classic;
-        packages = import ./pkgs pkgs;
+        packages = import ./pkgs {inherit pkgs;};
       }) // {
 
         overlays.default = (final: prev: {
