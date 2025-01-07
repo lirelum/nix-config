@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ appimage-run ]; }
+{ pkgs, ... }: { home.packages = with pkgs; [ appimage-run zotero ]; }
