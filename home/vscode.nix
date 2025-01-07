@@ -1,5 +1,5 @@
 # VS Codeの一般設定。LinuxおよびDarwinと共有。
-{ lib, ... }:
+{ lib, pkgs, config, ... }:
 let inherit (lib) mkOption types;
 in {
   options.local.vscode = {
@@ -9,7 +9,8 @@ in {
       type = types.anything;
     };
   };
-  config.local.vscode.packages = (ps:
+  config = {
+    local.vscode.packages = (ps:
     with ps; [
       bash-language-server
       shellcheck
@@ -29,8 +30,12 @@ in {
       julia-bin
       eslint
       nixfmt-classic
-      coreutils
+      coreutils-full
       openssh
-      which
     ]);
+    programs.vscode = {
+      enable = true;
+      package = pkgs.unstable.vscode.fhsWithPackages config.local.vscode.packages;
+    };
+  };
 }
