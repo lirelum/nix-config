@@ -37,7 +37,7 @@
       let pkgs = (selectNixpkgs system);
       in {
         formatter = pkgs.nixfmt-classic;
-        packages = import ./pkgs {inherit pkgs;};
+        packages = import ./pkgs { inherit pkgs; };
       }) // {
 
         overlays.default = (final: prev: {
@@ -59,6 +59,19 @@
               homeDirectory = "/Users/${username}";
             };
             modules = [ ./home ./home-darwin ];
+          });
+
+        homeConfigurations."autumn@miku" =
+          home-manager.lib.homeManagerConfiguration
+          (let system = "x86_64-linux";
+          in {
+            pkgs = selectNixpkgs system;
+            extraSpecialArgs = rec {
+              inherit inputs outputs;
+              username = "autumn";
+              homeDirectory = "/home/${username}";
+            };
+            modules = [ ./home ./home-nixos ];
           });
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
