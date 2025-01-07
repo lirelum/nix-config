@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs.jetbrains; [ idea-ultimate ]; }
+{ pkgs, ... }: { home.packages = with pkgs; [ jetbrains-toolbox ]; }
