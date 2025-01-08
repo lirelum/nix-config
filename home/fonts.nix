@@ -1,10 +1,6 @@
 { pkgs, ... }: {
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts = {
-    emoji = [ "Twitter Color Emoji" ];
-    monospace = [ "Fira Code" "Fira Code Symbol" "Source Han Sans" ];
-    sansSerif = [ "Inter" "Source Han Sans" ];
-    serif = [ "DejaVu Serif" "Source Han Serif" ];
   };
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
