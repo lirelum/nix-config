@@ -4,6 +4,7 @@
       dash-to-dock
       tray-icons-reloaded
       fullscreen-avoider
+      kimpanel
     ]);
   services.xserver = {
     displayManager.gdm.enable = true;
