@@ -8,5 +8,6 @@
     ./passwords.nix
     ./zen.nix
     ./distrobox.nix
+    ./floorp.nix
   ];
 }
