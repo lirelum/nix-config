@@ -44,12 +44,37 @@
         homeConfigurations."lirelum@zundamon" =
           home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            extraSpecialArgs = { inherit inputs outputs; };
+            modules = [
+              ./home
+              ./home-darwin
+              {
+                _module.args = rec {
+                  username = "lirelum";
+                  homeDirectory = "/Users/${username}";
+                };
+              }
+            ];
+          };
+
+        homeConfigurations."autumn@miku" =
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = rec {
               inherit inputs outputs;
-              username = "lirelum";
-              homeDirectory = "/Users/${username}";
+              username = "autumn";
+              homeDirectory = "/home/${username}";
             };
-            modules = [ ./home ./home-darwin ];
+            modules = [
+              ./home
+              ./home-nixos
+              {
+                _module.args = rec {
+                  username = "autumn";
+                  homeDirectory = "/home/${username}";
+                };
+              }
+            ];
           };
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
@@ -57,17 +82,6 @@
           modules = [
             ./nixos/configuration.nix
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = rec {
-                username = "autumn";
-                homeDirectory = "/home/${username}";
-                inherit inputs outputs;
-              };
-              home-manager.users.autumn.imports = [ ./home ./home-nixos ];
-            }
           ];
         };
       };
