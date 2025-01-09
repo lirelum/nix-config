@@ -5,7 +5,16 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./nixos ];
+  imports = [
+    ./distrobox.nix
+    ./games.nix
+    ./gnome.nix
+    ./gpu.nix
+    ./hardware-configuration.nix
+    ./i18n.nix
+    ./nix-conf.nix
+    ./nix-ld.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
