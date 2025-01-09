@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = (with pkgs; [ gnome-tweaks ])
+  environment.systemPackages = (with pkgs; [ gnome-tweaks ptyxis ])
     ++ (with pkgs.gnomeExtensions; [
       dash-to-dock
       tray-icons-reloaded

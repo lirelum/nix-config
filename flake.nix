@@ -41,8 +41,8 @@
           };
         });
 
-        homeConfigurations."lirelum@zundamon" =
-          home-manager.lib.homeManagerConfiguration {
+        homeConfigurations = {
+          "lirelum@zundamon" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             extraSpecialArgs = { inherit inputs outputs; };
             modules = [
@@ -57,8 +57,7 @@
             ];
           };
 
-        homeConfigurations."autumn@miku" =
-          home-manager.lib.homeManagerConfiguration {
+          "autumn@miku" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             extraSpecialArgs = rec {
               inherit inputs outputs;
@@ -76,6 +75,7 @@
               }
             ];
           };
+        };
 
         nixosConfigurations.miku = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
