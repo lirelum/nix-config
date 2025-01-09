@@ -1,1 +1,10 @@
-{ imports = [ ./vscode.nix ./firefox.nix ./im.nix ./libreoffice.nix ./misc.nix ./passwords.nix ]; }
+{
+  imports = [
+    ./vscode.nix
+    ./firefox.nix
+    ./im.nix
+    ./libreoffice.nix
+    ./misc.nix
+    ./passwords.nix
+  ];
+}

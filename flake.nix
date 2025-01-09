@@ -42,8 +42,7 @@
         });
 
         homeConfigurations."lirelum@zundamon" =
-          home-manager.lib.homeManagerConfiguration
-         {
+          home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             extraSpecialArgs = rec {
               inherit inputs outputs;
