@@ -9,5 +9,6 @@
     ./zen.nix
     ./distrobox.nix
     ./floorp.nix
+    ./fonts.nix
   ];
 }
